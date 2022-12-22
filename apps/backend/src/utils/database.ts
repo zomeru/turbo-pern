@@ -12,25 +12,14 @@ export const seedDatabase = async () => {
 
   if (submissionCount === 0) {
     console.log('Seeding database...');
-    await db.submission.createMany({
-      data: [
-        {
-          id: genId(),
-          submittedAt: new Date(),
-          data: {
-            name: 'Zomer',
-            twitter: 'zomeru',
-          },
+    await db.submission.create({
+      data: {
+        id: nanoid(16),
+        submittedAt: new Date(),
+        data: {
+          name: 'Zomer',
         },
-        {
-          id: genId(),
-          submittedAt: new Date(),
-          data: {
-            name: 'John Doe',
-            twitter: 'john_doe',
-          },
-        },
-      ],
+      },
     });
     console.log('Database seeded.');
   }
