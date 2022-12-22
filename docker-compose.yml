@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
+    ports:
+      - 8000:8000
+      - 9229:9229 # for debugging
+    volumes:
+      - ./apps/backend:/usr/src/app
+      - /usr/src/app/node_modules
+    command: yarn start:docker
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://postgres@postgres:5432/webapp_dev
+      PORT: 8000
+      REDIS_HOST: redis
+
+  redis:
+    image: redis:6.2.5-alpine
+
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: webapp_dev
+      POSTGRES_HOST_AUTH_METHOD: trust
