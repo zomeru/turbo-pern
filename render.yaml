@@ -9,7 +9,7 @@ services:
     region: singapore
     branch: main
     buildCommand: yarn && yarn build --filter=backend
-    startCommand: cd app/backend; yarn start
+    startCommand: cd app/backend && node dist/index.js
     envVars:
       - key: DATABASE_URL
         fromDatabase:
