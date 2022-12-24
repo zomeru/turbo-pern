@@ -35,7 +35,7 @@ services:
         source: /*
         destination: /index.html
     envVars:
-      - key: GRAPHQL_HOST
+      - key: VITE_GRAPHQL_HOST
         fromService:
           name: turbo-pern-prod-backend1
           type: web
