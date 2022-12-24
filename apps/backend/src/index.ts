@@ -8,12 +8,12 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import { typeDefs, resolvers } from './graphql';
-import { seedDatabase } from './utils';
+// import { seedDatabase } from './utils';
 
 const main = async () => {
   const app = express();
 
-  seedDatabase();
+  // seedDatabase();
 
   app.use(morgan('dev'));
 

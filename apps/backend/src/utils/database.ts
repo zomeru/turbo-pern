@@ -7,20 +7,20 @@ export const db = new PrismaClient({
   log: ['error', 'query', 'info', 'warn'],
 });
 
-export const seedDatabase = async () => {
-  const submissionCount = await db.submission.count();
+// export const seedDatabase = async () => {
+//   const submissionCount = await db.submission.count();
 
-  if (submissionCount === 0) {
-    console.log('Seeding database...');
-    await db.submission.create({
-      data: {
-        id: nanoid(16),
-        submittedAt: new Date(),
-        data: {
-          name: 'Zomer',
-        },
-      },
-    });
-    console.log('Database seeded.');
-  }
-};
+//   if (submissionCount === 0) {
+//     console.log('Seeding database...');
+//     await db.submission.create({
+//       data: {
+//         id: nanoid(16),
+//         submittedAt: new Date(),
+//         data: {
+//           name: 'Zomer',
+//         },
+//       },
+//     });
+//     console.log('Database seeded.');
+//   }
+// };
