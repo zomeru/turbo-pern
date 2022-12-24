@@ -2,10 +2,10 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import express from 'express';
-import cors from 'cors';
 import { json } from 'body-parser';
 import http from 'http';
 import morgan from 'morgan';
+import cors from 'cors';
 
 import { typeDefs, resolvers } from './graphql';
 import { seedDatabase } from './utils';
