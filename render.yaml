@@ -4,8 +4,8 @@ services:
     env: node
     repo: https://github.com/zomeru/turbo-pern.git
     buildFilter:
-      paths:
-        - apps/backend/**
+      ignoredPaths:
+        - apps/frontend/**
     region: singapore
     branch: main
     buildCommand: yarn && yarn build --filter=backend
@@ -26,8 +26,8 @@ services:
     env: static
     repo: https://github.com/zomeru/turbo-pern.git
     buildFilter:
-      paths:
-        - apps/frontend/**
+      ignoredPaths:
+        - apps/backend/**
     buildCommand: yarn && yarn build --filter=frontend
     staticPublishPath: ./apps/frontend/dist
     routes:
