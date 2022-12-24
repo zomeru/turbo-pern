@@ -28,6 +28,7 @@ services:
     buildFilter:
       paths:
         - apps/frontend/**
+    region: singapore
     buildCommand: yarn && yarn build --filter=frontend
     staticPublishPath: ./apps/frontend/dist
     routes:
@@ -45,7 +46,9 @@ services:
 
   - type: redis
     name: turbo-pern-prod-redis1
+    region: singapore
     ipAllowList: []
 
 databases:
   - name: turbo-pern-prod-db1
+    region: singapore
