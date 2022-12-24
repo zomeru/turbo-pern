@@ -3,6 +3,9 @@ services:
     name: turbo-pern-prod-backend1
     env: node
     repo: https://github.com/zomeru/turbo-pern.git
+    buildFilter:
+      path:
+        - apps/backend/**
     region: singapore
     branch: main
     buildCommand: yarn && yarn build --filter=backend
@@ -12,10 +15,32 @@ services:
         fromDatabase:
           name: turbo-pern-prod-db1
           property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: turbo-pern-prod-redis1
+          property: connectionString
 
   - type: web
     name: turbo-pern-prod-frontend1
     env: static
+    repo: https://github.com/zomeru/turbo-pern.git
+    buildFilter:
+      path:
+        - apps/frontend/**
+    buildCommand: yarn && yarn build --filter=frontend
+    staticPublishPath: ./apps/frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: GRAPHQL_HOST
+        fromService:
+          name: turbo-pern-prod-backend1
+          type: web
+          property: host
+      # - key: VITE_GRAPHQL_URL
+      #   value:
 
   - type: redis
     name: turbo-pern-prod-redis1
