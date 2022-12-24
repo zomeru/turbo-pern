@@ -28,7 +28,6 @@ services:
     buildFilter:
       paths:
         - apps/frontend/**
-    region: singapore
     buildCommand: yarn && yarn build --filter=frontend
     staticPublishPath: ./apps/frontend/dist
     routes:
