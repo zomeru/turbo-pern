@@ -48,6 +48,7 @@
     "graphql-iso-date": "^3.6.1",
     "graphql-tag": "^2.12.6",
     "graphql-type-json": "^0.3.2",
+    "ioredis": "^5.2.4",
     "knex": "^2.3.0",
     "lodash": "^4.17.21",
     "morgan": "^1.10.0",

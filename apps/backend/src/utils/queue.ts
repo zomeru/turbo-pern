@@ -1,13 +1,15 @@
 import { Queue, Worker } from 'bullmq';
+import Redis from 'ioredis';
 import ModGenerate from './generate';
 
 const QUEUE_NAME = 'default';
 
-if (!process.env.REDIS_HOST) console.warn('REDIS_HOST not set!');
+if (!process.env.REDIS_URL) console.warn('REDIS_URL not set!');
+const connection = new Redis(process.env.REDIS_URL as string);
 
-const connection = {
-  host: process.env.REDIS_HOST,
-};
+// const connection = {
+//   host: process.env.REDIS_HOST,
+// };
 
 export const queue = new Queue(QUEUE_NAME, { connection });
 

@@ -9,15 +9,15 @@ services:
       - 8000:8000
       - 9229:9229 # for debugging
     volumes:
-      - ./apps/backend:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./apps/backend:/app/apps/backend
+      - /app/apps/backend/node_modules
     command: yarn start:docker
     depends_on:
       - postgres
     environment:
       DATABASE_URL: postgres://postgres@postgres:5432/webapp_dev
       PORT: 8000
-      REDIS_HOST: redis
+      REDIS_URL: redis://redis:6379
 
   redis:
     image: redis:6.2.5-alpine

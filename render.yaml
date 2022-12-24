@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: turbo-pern-prod-backend1
+    env: node
+    repo: https://github.com/zomeru/turbo-pern.git
+    region: singapore
+    branch: main
+    buildCommand: yarn && yarn build --filter=backend
+    startCommand: cd app/backend; yarn start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: turbo-pern-prod-db1
+          property: connectionString
+
+  - type: web
+    name: turbo-pern-prod-frontend1
+    env: static
+
+  - type: redis
+    name: turbo-pern-prod-redis1
+
+databases:
+  - name: turbo-pern-prod-db1
