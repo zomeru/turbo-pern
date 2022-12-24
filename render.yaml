@@ -18,6 +18,7 @@ services:
       - key: REDIS_URL
         fromService:
           name: turbo-pern-prod-redis1
+          type: redis
           property: connectionString
 
   - type: web
@@ -44,6 +45,7 @@ services:
 
   - type: redis
     name: turbo-pern-prod-redis1
+    ipAllowList: []
 
 databases:
   - name: turbo-pern-prod-db1
